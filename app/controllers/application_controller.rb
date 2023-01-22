@@ -48,6 +48,7 @@ class ApplicationController < ActionController::Base
     @numerator = @r*@principal
     @denominator = (1 - ((1 + @r)**(-1*@n)))
     @payment = (@numerator / @denominator).round(2)
+    @apr = @apr.to_s(:percentage, { :precision => 4 } )
     render({ :template => "calculation_templates/payment_results.html.erb"})
   end
 end
